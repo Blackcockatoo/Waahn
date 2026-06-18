@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Black Omen — Proposal Administration</title>
+  <meta name="theme-color" content="#07080d" /><link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="topbar"><a class="brand" href="index.html">BLACK OMEN</a><div class="navlinks"><a href="index.html#community">← Public app</a></div></nav>
+  <main id="main" class="adminMain">
+    <header class="adminHeader"><span class="eyebrow">Protected workspace</span><h1>Proposal administration</h1><p>Review visible and hidden community research. Administrator access is restricted by the backend allowlist.</p></header>
+    <section id="adminSetup" class="card" hidden><h2>Connect Supabase first</h2><p>The admin dashboard becomes available after the public Supabase URL and anon key are supplied through deployment settings.</p><a class="btn" href="README.md">Open setup guide</a></section>
+    <section id="loginPanel" class="card loginCard">
+      <h2>Administrator sign-in</h2><p>Enter the allowlisted administrator email. Supabase will send a secure magic link.</p>
+      <form id="loginForm"><label>Email address <input id="adminEmail" type="email" autocomplete="email" required /></label><div class="formActions"><button class="btn primaryBtn" type="submit">Send magic link</button><span id="loginStatus" role="status"></span></div></form>
+    </section>
+    <section id="adminPanel" hidden>
+      <div class="toolbar adminToolbar"><input id="adminSearch" type="search" placeholder="Search all proposals…" aria-label="Search all proposals" /><select id="visibilityFilter" aria-label="Filter by visibility"><option value="all">All proposals</option><option value="visible">Visible</option><option value="hidden">Hidden</option></select><button id="adminRefresh" class="pill" type="button">Refresh</button><button id="signOutBtn" class="textBtn" type="button">Sign out</button></div>
+      <div id="adminStatus" class="connectionNotice" role="status" hidden></div><div id="adminList" class="adminList"></div>
+    </section>
+  </main>
+  <script src="config.js"></script><script src="admin.js"></script>
+</body>
+</html>

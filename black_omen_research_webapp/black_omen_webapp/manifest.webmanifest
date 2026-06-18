@@ -1,0 +1,11 @@
+{
+  "name": "Black Omen Research Map",
+  "short_name": "Black Omen",
+  "description": "Black Omen research map and community word proposals.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07080d",
+  "theme_color": "#07080d",
+  "icons": []
+}

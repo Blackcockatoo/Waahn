@@ -1,0 +1,9 @@
+{
+  "name": "black-omen-research-webapp",
+  "private": true,
+  "version": "2.0.0",
+  "scripts": {
+    "build": "node scripts/generate-config.mjs",
+    "start": "python -m http.server 8080"
+  }
+}

@@ -1,0 +1,20 @@
+Build and polish this static webapp folder into a premium responsive research webapp.
+
+Keep the core purpose:
+Black Omen / Black Wing Chant — Bunurong/Boonwurrung language working map.
+Do not present the content as an approved translation.
+Keep the disclaimers clear.
+
+Tasks:
+1. Preserve all data in data.js.
+2. Improve responsive layout and accessibility.
+3. Keep YouTube embed live.
+4. Add tabs or routes for Summary, Song, Word Bank, Missing Terms, Line Map, Chants, Request Pack, Sources.
+5. Add search/filter/export for Word Bank and Line Map.
+6. Add print/PDF styles.
+7. Add offline/PWA support.
+8. Keep the dark B$S aesthetic.
+9. Do not invent missing language words.
+10. Keep source notes and authority request visible.
+
+Deploy target: static hosting, no backend required.

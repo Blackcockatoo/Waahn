@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Black Omen — Bunurong/Boonwurrung Research Webapp</title>
+  <meta name="description" content="Interactive Black Omen language research map and community word proposals." />
+  <meta name="theme-color" content="#07080d" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skipLink" href="#main">Skip to content</a>
+  <nav class="topbar" aria-label="Primary navigation">
+    <a class="brand" href="#top">BLACK OMEN</a>
+    <button id="menuBtn" class="menuBtn" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <div id="navLinks" class="navlinks">
+      <a href="#summary">Summary</a><a href="#song">Song</a><a href="#video">Video</a>
+      <a href="#wordbank">Curated words</a><a href="#community">Community</a>
+      <a href="#linemap">Line map</a><a href="#request">Request</a><a href="#sources">Sources</a>
+    </div>
+  </nav>
+
+  <header id="top" class="hero">
+    <div class="heroText">
+      <div class="eyebrow">B$S · Black Wing Crew · living research scaffold</div>
+      <h1>Bunurong–Boonwurrung Research Map</h1>
+      <p>Explore the Black Omen song, its working language map, and community-submitted word research. Community proposals are visible for comparison, but remain unverified until confirmed by Bunurong language authorities.</p>
+      <div class="heroActions">
+        <a class="btn primaryBtn" href="#community">Propose a word</a>
+        <a class="btn" href="#wordbank">Explore research</a>
+        <button class="btn" id="printBtn" type="button">Print / Save PDF</button>
+        <button class="btn" id="exportBtn" type="button">Export CSV</button>
+      </div>
+    </div>
+    <div class="heroCard"><img src="assets/black-omen-poster.png" alt="Black Omen / Black Wing Chant poster" /></div>
+  </header>
+
+  <main id="main">
+    <section id="summary" class="panel">
+      <div class="sectionHead"><span class="num">01</span><h2>Core finding</h2></div>
+      <div class="grid">
+        <article class="card wide">
+          <p><strong>Use the correct frame:</strong> this is a Bunurong / Boonwurrung language guidance request, not a finished “Koori translation.” Frankston sits on Bunurong Country, and Koori is a regional identity term, not one single language.</p>
+          <p>The public record supports a layered working map: stronger public anchors, older or mixed-source leads needing checking, and missing lyric terms that should not be invented.</p>
+          <blockquote>This is a working language map using publicly traceable Bunurong/Boonwurrung words. It is not an approved full translation. Missing words, grammar, pronunciation, and cultural fit require confirmation from Bunurong language authorities before public release.</blockquote>
+        </article>
+        <aside class="card stats" aria-label="Research totals">
+          <div><b id="countWords">0</b><span>curated leads</span></div><div><b id="countCommunity">0</b><span>community proposals</span></div>
+          <div><b id="countLines">0</b><span>mapped lines</span></div><div><b id="countSources">0</b><span>sources</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="song" class="panel">
+      <div class="sectionHead"><span class="num">02</span><h2>Full song</h2></div>
+      <div class="grid two">
+        <article class="card"><pre id="songText" class="song"></pre><button class="btn smallBtn" type="button" data-copy="#songText">Copy full song</button></article>
+        <article class="card"><h3>Research note</h3><p>The English source is kept intact. The line map brackets missing words instead of presenting guesses as a completed translation.</p><ul class="cleanList"><li><strong>Strong anchors:</strong> Waang, Balambalam, Burrak, Biik.</li><li><strong>Needs checking:</strong> Yarragineneit, Cooyung, Ngargee.</li><li><strong>Blocked:</strong> omen, seer, sign, wing, circle, side, row, oar, heaven, hell.</li></ul></article>
+      </div>
+    </section>
+
+    <section id="video" class="panel">
+      <div class="sectionHead"><span class="num">03</span><h2>Watch the song</h2></div>
+      <article class="card">
+        <div class="videoEmbed"><iframe id="youtubeFrame" title="Black Omen song video — autoplaying muted" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="videoActions"><p><strong>Playing live in the page.</strong> YouTube starts muted; use the player controls to turn sound on.</p><a id="youtubeLink" class="btn smallBtn" target="_blank" rel="noopener noreferrer">Open on YouTube</a></div>
+      </article>
+      <div class="omenGallery" aria-label="Black Omen artwork gallery">
+        <figure class="galleryFeature">
+          <img src="assets/4f57c614-84bd-4bdb-9222-400ed92e3f2f.png" alt="Black Omen Black Wing Chant research artwork with a crow, butterfly, coast and canoe" loading="lazy" />
+          <figcaption>Black Omen · Black Wing Chant · language working map</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/ChatGPT Image Jun 18, 2026, 06_34_08 PM.png" alt="Black Omen research map artwork with a crow, butterfly wings and a crew rowing through dark seas" loading="lazy" />
+          <figcaption>Black Omen · Bunurong–Boonwurrung research map</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="wordbank" class="panel">
+      <div class="sectionHead"><span class="num">04</span><h2>Curated word bank</h2></div>
+      <p class="sectionIntro">Read-only research assembled from the sources listed below.</p>
+      <div class="toolbar"><label class="srOnly" for="wordSearch">Search curated words</label><input id="wordSearch" type="search" placeholder="Search words, notes, confidence…" /><button class="pill active" type="button" data-filter="ALL">All</button><button class="pill" type="button" data-filter="HAVE">Have</button><button class="pill" type="button" data-filter="THINK">Think</button><button class="pill" type="button" data-filter="ASK">Ask</button></div>
+      <div id="wordCards" class="cards" aria-live="polite"></div>
+    </section>
+
+    <section id="community" class="panel">
+      <div class="sectionHead"><span class="num">05</span><h2>Community word proposals</h2></div>
+      <div class="notice"><strong>Community / Unverified</strong><span>These are public research proposals—not approved translations. Check all language use with Bunurong language authorities.</span></div>
+      <div class="communityLayout">
+        <article class="card formCard">
+          <div class="formHeading"><div><span class="eyebrow">Contribute research</span><h3 id="proposalFormTitle">Propose a word</h3></div><button id="cancelEditBtn" class="textBtn" type="button" hidden>Cancel edit</button></div>
+          <form id="proposalForm" novalidate>
+            <input id="proposalId" type="hidden" />
+            <div class="honeypot" aria-hidden="true"><label for="website">Leave this blank</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off" /></div>
+            <div class="formGrid">
+              <label>English word or phrase <input id="englishTerm" name="english_term" maxlength="80" required /></label>
+              <label>Proposed translation <input id="proposedTranslation" name="proposed_translation" maxlength="120" required /></label>
+              <label>Pronunciation <input id="pronunciation" name="pronunciation" maxlength="160" placeholder="Optional" /></label>
+              <label>Confidence <select id="confidence" name="confidence"><option>Low</option><option selected>Medium</option><option>High</option></select></label>
+              <label>Research status <select id="researchStatus" name="research_status"><option value="ASK">Ask / needs authority guidance</option><option value="THINK">Think / research lead</option><option value="HAVE">Have / publicly supported</option></select></label>
+              <label>Source name <input id="sourceName" name="source_name" maxlength="160" placeholder="Optional" /></label>
+              <label class="fullField">Source link <input id="sourceUrl" name="source_url" type="url" maxlength="500" placeholder="https://… (optional)" /></label>
+              <label class="fullField">Research notes <textarea id="researchNotes" name="research_notes" rows="5" maxlength="2000" required></textarea></label>
+            </div>
+            <label class="consent"><input id="researchConsent" type="checkbox" required /> I understand this will be published publicly as unverified community research.</label>
+            <div class="formActions"><button id="submitProposalBtn" class="btn primaryBtn" type="submit">Publish proposal</button><span id="formStatus" class="formStatus" role="status"></span></div>
+          </form>
+        </article>
+
+        <div class="communityResults">
+          <div class="toolbar compactToolbar"><label class="srOnly" for="communitySearch">Search community proposals</label><input id="communitySearch" type="search" placeholder="Search community proposals…" /><button id="refreshCommunityBtn" class="pill" type="button">Refresh</button><a class="textBtn" href="admin.html">Admin</a></div>
+          <div id="connectionNotice" class="connectionNotice" role="status" hidden></div>
+          <div id="communityGroups" class="communityGroups" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="missing" class="panel"><div class="sectionHead"><span class="num">06</span><h2>Missing / unresolved terms</h2></div><div id="missingCloud" class="cloud"></div></section>
+    <section id="linemap" class="panel"><div class="sectionHead"><span class="num">07</span><h2>Full line-by-line map</h2></div><div class="toolbar"><label class="srOnly" for="lineSearch">Search the line map</label><input id="lineSearch" type="search" placeholder="Search original, skeleton, unresolved…" /></div><div id="lineCards" class="lineCards"></div></section>
+    <section id="chants" class="panel"><div class="sectionHead"><span class="num">08</span><h2>Safe demo chant options</h2></div><div id="chantCards" class="cards three"></div></section>
+    <section id="request" class="panel"><div class="sectionHead"><span class="num">09</span><h2>Authority request pack</h2></div><div class="grid two"><article class="card"><label class="srOnly" for="requestText">Authority request text</label><textarea id="requestText" rows="22"></textarea><button class="btn smallBtn" type="button" data-copy="#requestText">Copy request</button></article><aside class="card"><h3>Who to approach</h3><p><strong>Bunurong Language Team</strong><br>language.team@bunurong-language.org<br>linguist@bunuronglc.org.au</p><p><strong>Bunurong Land Council</strong><br>Use the CVRU Language Inception / Language and Naming pathway.</p><p><strong>VACL</strong><br>Victorian Aboriginal Corporation for Languages for language support/referral, while deferring to Bunurong authority for Bunurong Country use.</p></aside></div></section>
+    <section id="sources" class="panel"><div class="sectionHead"><span class="num">10</span><h2>Sources</h2></div><div id="sourceCards" class="cards two"></div></section>
+  </main>
+
+  <footer><strong>Black Omen / Black Wing Chant — B$S research webapp.</strong><span>Research scaffold only; seek Bunurong/Boonwurrung authority confirmation before public release as language translation.</span></footer>
+  <script src="config.js"></script><script src="data.js"></script><script src="app.js"></script>
+</body>
+</html>
